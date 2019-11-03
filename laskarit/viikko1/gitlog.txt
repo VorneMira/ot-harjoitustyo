@@ -1,0 +1,20 @@
+commit c3b7b2662c9be7323e9c7dd3440d97e8ee465f41 (HEAD -> master)
+Author: MiraVorne77 <mira.vorne@helsinki.fi>
+Date:   Sun Nov 3 15:05:56 2019 +0200
+
+    muutokset tiedostoihin
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a4182091b286bef55819ef694e2b0f58e5c86a1f
+Author: MiraVorne77 <mira.vorne@helsinki.fi>
+Date:   Sun Nov 3 15:00:55 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
