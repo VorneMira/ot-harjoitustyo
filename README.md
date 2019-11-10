@@ -12,4 +12,4 @@
 
 
 **Työaikakirjanpito:**  
-[Työaikakirjanpito]https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md
+[Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
