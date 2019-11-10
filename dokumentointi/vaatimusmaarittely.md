@@ -58,5 +58,5 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - Käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa.
 - Tulevat tapahtumat kyseisen ystävän kanssa, esim. yökyläily 10.12.2019 klo 15.
 - Sukulaisten ja perhetuttujen yhteystietojen lisääminen järjestelmään.
-- Sukulaisten yhteystietojen näkyminen kaikille käyttäjille. 
-- Sukulaisten ja lapsen ystävien yhteystietojen erittely käyttöliittymissä, esim. alasvetovalikolla.
+- Sukulaisten ja perhetuttujen yhteystietojen näkyminen kaikille käyttäjille. 
+- Sukulaisten ja lapsen ystävien yhteystietojen erittely käyttöliittymässä, esim. alasvetovalikolla.
