@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Ajatus sovellukseen syntyi opettajana työskentelevän äidin ongelmasta hallita yhteyksiä kolmen pienen lapsen vanhempien kanssa. Yhteystietoja tarvitaan mm. leikkitreffien, yökyläilyjen, synttärijuhlien ym. sopimiseen. Tai kun lapsi ei olekaan illalla kotona ja kännykästä on akku loppu, ryhdytään käymään läpi ystävien ja heidän vanhempiensa yhteystietolistaa. 
+Ajatus sovellukseen syntyi opettajana työskentelevän äidin ongelmasta hallita yhteyksiä kolmen pienen lapsensa vanhempien kanssa. Yhteystietoja tarvitaan mm. leikkitreffien, yökyläilyjen, synttärijuhlien ym. sopimiseen. Tai kun lapsi ei olekaan illalla kotona ja kännykästä on akku loppu, ryhdytään käymään läpi ystävien ja heidän vanhempiensa yhteystietolistaa. 
 
 Sovellukseen tallennetaan kaikki perheelle tärkeät yhteystiedot, kuten lasten ystävien ja heidän vanhempiensa puhelinnumerot ja osoitteet. Jokainen perheenjäsen voi selata omien ystäviensä yhteystietoja, vanhemmat voivat selata myös lastensa ystävien sekä tarvittaessa myös heidän vanhempiensa yhteystietoja. 
 
