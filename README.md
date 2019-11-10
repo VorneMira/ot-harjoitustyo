@@ -1,10 +1,9 @@
 
 # Ohjelmistotekniikka syksy 2019
 
-*Address book*
+*Address book*    
 
-
-1. laskarin linkit
+1. laskarin linkit:
 * [gitlog.txt](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)  
 * [komentorivi.txt](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)  
 
