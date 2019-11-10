@@ -2,19 +2,22 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla käyttäjien on mahdollista pitää kirjaa tekemättömistään töistä eli _todoista_. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen tehtävälistansa.
+Sovellukseen tallennetaan kaikki perheelle tärkeät yhteystiedot, kuten lasten ystävien ja heidän vanhempiensa puhelinnumerot ja osoitteet. Jokainen perheenjäsen voi selata omien ystäviensä yhteystietoja, vanhemmat voivat selata myös lastensa ystävien sekä tarvittaessa myös heidän vanhempiensa yhteystietoja.
 
 ## Käyttäjät
 
-Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali käyttäjä_. Myöhemmin sovellukseen saatetaan lisätä suuremmilla oikeuksilla varustettu _pääkäyttäjä_.
+Sovelluksella on kaksi käyttäjäroolia, perheen vanhempien käyttäjärooli, eli _pääkäyttäjä_ sekä lasten käyttäjärooli, eli _normaali käyttäjä_.
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kolmesta eri näkymästä
+Sovellus koostuu neljästä eri näkymästä
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/v-1.png" width="750">
+* Login -näkymä.
+* Add new user -näkymä.
+* Lapsen omat ystävät -näkymä, josta voidaan lisätä myös uusia yhteystietoja.
+* Vanhempien -näkymä, josta voidaan hakea tai lisätä lasten ystävien sekä heidän vanhempiensa yhteystietoja.
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän tehtävälistaan.
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän yhteystietoihin tai vanhempien näkymään.
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -29,26 +32,29 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee omat tekemättömät työt eli _todot_
+- Lapsi-käyttäjä näkee omien ystävien yhteystiedot.
 
-- käyttäjä voi luoda uuden todon
-  - luou todo näkyy ainoastaan sen luoneelle käyttäjälle
+- Lapsi-käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
+  - luotu yhteystieto näkyy ainoastaan sen luoneelle lapsi-käyttäjälle tai vanhemmat-käyttäjälle.
 
-- käyttäjä voi merkitä todon tehdyksi, jolloin todo häviää listalta
+- Lapsi-käyttäjä voi kirjautua ulos järjestelmästä.
 
-- käyttäjä voi kirjautua ulos järjestelmästä
+- Vanhempi-käyttäjä näkee lastensa ystävien yhteystiedot.
+
+- Vanhempi-käyttäjä voi hakea yhteystietoja tietyn lapsensa mukaan.
+
+- Vanhempi-käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
+  - luotu yhteystieto näkyy ainoastaan sille liittyvälle lapsi-käyttäjälle tai vanhemmat-käyttäjälle.
+
+- Vanhempi-käyttäjä voi kirjautua ulos järjestelmästä
 
 ## Jatkokehitysideoita
 
-Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla
+Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla:
 
-- tehdyksi merkittyjen todojen tarkastelu
-- tehdyksi merkittyjen todojen merkkaaminen tekemättömiksi
-- todon tietojen editointi
-- todojen järjestely tärkeysjärjestykseen
-- todojen määrittely muille käyttäjille
-- käyttäjätiimit, jotka näkevät kaikki yhteiset todot
-- mahdollisuus useampaan erilliseen todo-listaan
-- lisätään todoon kenttä, johon on mahdollista merkitä tarkempia todoon liittyviä tietoja
-- käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa
-- käyttäjätunnuksen (ja siihen liittyvien todojen) poisto
+- Yhteystietojen muokkaus.
+- Käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa.
+- Sukulaisten yhteystietojen lisääminen.
+- Sukulaisten yhteystietojen näkyminen kaikille käyttäjille. 
+- Sukulaisten ja lapsen ystävien yhteystietojen erittely käyttöliittymissä, esim. alasvetovalikolla.
+- Vanhempien ystävien yhteystietojen lisääminen.
