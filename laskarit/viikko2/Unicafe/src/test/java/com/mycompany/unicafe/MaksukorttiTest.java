@@ -15,6 +15,36 @@ public class MaksukorttiTest {
 
     @Test
     public void luotuKorttiOlemassa() {
-        assertTrue(kortti!=null);      
+        assertTrue(kortti!=null); 
+    }
+    @Test
+    public void kortinSaldoAlussaOikein() {
+        int saldo = kortti.saldo();
+        assertEquals(10, saldo); 
+    }
+    @Test
+    public void rahanLataaminenKasvattaaSaldoaOikein() {
+        kortti.lataaRahaa(10);
+        assertEquals("saldo: 0.20", kortti.toString());
+    }
+    @Test
+    public void saldoVaheneeOikeinJosRahaaOnTarpeeksi() {
+        kortti.otaRahaa(10);
+        assertEquals("saldo: 0.0", kortti.toString());
+    }
+    @Test
+    public void saldoEiMuutuJosRahaaEiOleTarpeeksi() {
+        kortti.otaRahaa(11);
+        assertEquals("saldo: 0.10", kortti.toString());
+    }
+    @Test
+    public void palauttaaTrueJosRahatRiittivät() {
+        boolean vastaus = kortti.otaRahaa(9);
+        assertEquals(true, vastaus);
+    }
+    @Test
+    public void palauttaaFalseJosRahatEivatRiita() {
+        boolean vastaus = kortti.otaRahaa(11);
+        assertEquals(false, vastaus);
     }
 }
