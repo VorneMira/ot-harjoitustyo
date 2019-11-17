@@ -1,10 +1,10 @@
 
 # Ohjelmistotekniikka syksy 2019   
 
-**Harjoitustyö:**  
+## Harjoitustyö  
 [Address book](https://github.com/MiraVorne77/ot-harjoitustyo/tree/master/Address_book)
 
-**Dokumentaatio:**   
+## Dokumentaatio   
 * [Vaatimusmäärittely](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 * [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
