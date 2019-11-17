@@ -1,7 +1,5 @@
 
-# Ohjelmistotekniikka syksy 2019
-
-*Address book*    
+# Ohjelmistotekniikka syksy 2019   
 
 **Harjoitustyö:**  
 [Address book](https://github.com/MiraVorne77/ot-harjoitustyo/tree/master/Address_book)
