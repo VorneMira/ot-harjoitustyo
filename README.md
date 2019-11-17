@@ -12,7 +12,7 @@
 * [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
 **Harjoitustyö:**  
-[Address book](https://github.com/MiraVorne77/ot-harjoitustyo/tree/master/Address_book)
+* [Address book](https://github.com/MiraVorne77/ot-harjoitustyo/tree/master/Address_book)
 
 ## Komentorivitoiminnot
 
