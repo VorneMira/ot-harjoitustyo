@@ -6,8 +6,9 @@
 
 ## Dokumentaatio   
 * [Vaatimusmäärittely](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
-* [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 * [Arkkitehtuuri](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+* [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+
 
 ## Komentorivitoiminnot
 
