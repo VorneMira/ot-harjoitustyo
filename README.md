@@ -5,8 +5,9 @@
 [Address book](https://github.com/MiraVorne77/ot-harjoitustyo/tree/master/Address_book)
 
 ## Dokumentaatio   
-* [Vaatimusmäärittely](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
-* [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
+* [Vaatimusmäärittely](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+* [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+* [Arkkitehtuuri](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 ## Komentorivitoiminnot
 
