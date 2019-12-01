@@ -94,6 +94,7 @@ public class AddressBookGUI extends Application {
         user.addContact(new Contact("Pätkä", "555-1234567", "Pätkätie 8", "Justiina", "5559876543"));
         showContacts(user);
         Scene scene = new Scene(vbox);
+        scene.getStylesheets().add("AddressBookStyles.css");
 
         primaryStage.setTitle("Address book");
         primaryStage.setScene(scene);

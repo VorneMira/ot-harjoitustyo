@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import mira.addressBook.logics.User;
 import mira.addressBook.logics.Contact;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -27,7 +27,7 @@ public class ContactsTest {
     
     @Before
     public void setUp() {
-        user = new User("Heikki", false);       
+        user = new User("Mira", true);       
         contact = new Contact("Katja", "050505050", "Juhanintie 1", "Anne", "040404040");
     }
     
@@ -43,11 +43,39 @@ public class ContactsTest {
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void luoUusiYstava() {
-        assertEquals("User name: Heikki, Permission: Child, Contacts: ", user.toString());
+    public void luoUusiLapsiKayttaja() {
+        user = new User("Ville", false);
+        assertEquals("User name: Ville, Permission: Child, Contacts: ", user.toString());
     }
+    
+    @Test
+    public void luoUusiAikuisKayttaja() {
+        assertEquals("Mira", user.getName());
+        assertEquals("User name: Mira, Permission: Adult, Contacts: ", user.toString());
+    }
+    
+    @Test
+    public void lisaaUusiYstava() {
+        user.addContact(contact);
+        ArrayList<Contact> contacts = user.getContacts();
+        Contact addedContact = contacts.get(0);
+        assertEquals(addedContact.getFriendName(), "Katja");
+        assertEquals(addedContact.getFriendPhone(), "050505050");
+        assertEquals(addedContact.getFriendAddress(), "Juhanintie 1");
+        assertEquals(addedContact.getParentName(), "Anne");
+        assertEquals(addedContact.getParentPhone(), "040404040");
+    }
+    
     @Test
     public void yhteystietoYstavaVanhempi(){
+        assertEquals(contact.getFriendName(), "Katja");
+        assertEquals(contact.getFriendPhone(), "050505050");
+        assertEquals(contact.getFriendAddress(), "Juhanintie 1");
+        assertEquals(contact.getParentName(), "Anne");
+        assertEquals(contact.getParentPhone(), "040404040");     
+    }
+    @Test
+    public void lisaaYhteystieto(){
         assertEquals(contact.getFriendName(), "Katja");
         assertEquals(contact.getFriendPhone(), "050505050");
         assertEquals(contact.getFriendAddress(), "Juhanintie 1");
