@@ -28,7 +28,7 @@ mvn jacoco:report
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
 
-### Ssuoritettavan jarin generointi
+### Suoritettavan jarin generointi
 
 Komento
 
