@@ -27,3 +27,22 @@ mvn jacoco:report
 ```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+### suoritettavan jarin generointi
+
+Komento
+
+```
+mvn package
+```
+
+Generoi hakemistoon target suoritettavan jar-tiedoston Address_book-1.0-SNAPSHOT.jar
+
+### Checkstyle
+
+Tiedostoon checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
+
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
