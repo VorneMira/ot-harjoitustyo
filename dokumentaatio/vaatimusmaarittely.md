@@ -15,9 +15,9 @@ Sovelluksella on kaksi käyttäjäroolia, perheen vanhempien käyttäjärooli, e
 Sovellus koostuu neljästä eri näkymästä
 
 * Kirjautumis-näkymä.
-* Lisää uusi käyttäjä -näkymä.
-* Lapsen omat ystävät -näkymä, josta voidaan lisätä myös uusia yhteystietoja.
-* Vanhempien -näkymä, josta voidaan hakea tai lisätä lasten ystävien sekä heidän vanhempiensa yhteystietoja.
+* Lisää uusi käyttäjä -näkymä. (TEHTY)
+* Lapsen omat ystävät -näkymä, josta voidaan lisätä myös uusia yhteystietoja. (TEHTY)
+* Vanhempien -näkymä, josta voidaan hakea tai lisätä lasten ystävien sekä heidän vanhempiensa yhteystietoja. (TEHTY)
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän yhteystietoihin tai vanhempien näkymään.
 
