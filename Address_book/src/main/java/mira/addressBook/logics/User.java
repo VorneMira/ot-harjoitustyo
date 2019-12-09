@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class User {
 
+    private String guid = java.util.UUID.randomUUID().toString();
     private String name;
     private int permission;
     private static final int CHILD = 10;
@@ -28,7 +29,22 @@ public class User {
             this.permission = CHILD;
         }
     }
+    
+    public User(String name, int role, String guid) {
+        this.name = name;
+        if (role == ADULT) {
+            this.permission = ADULT;
+        }
+        else {
+            this.permission = CHILD;
+        }
+        this.guid = guid;
+    }
 
+    public String getGuid() {
+        return this.guid;
+    }
+    
     public String getName() {
         return this.name;
     }
@@ -38,6 +54,15 @@ public class User {
             return "Adult";
         } else {
             return "Child";
+        }
+    }
+    
+    public boolean isAdult() {
+        if (this.permission == ADULT) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -57,6 +82,10 @@ public class User {
 
     public ArrayList<Contact> getContacts() {
         return contacts;
+    }
+    
+    public void clearContacts() {
+        contacts.clear();
     }
     /*public static void main(String[] args){
         User user = new User("Pekka", true);

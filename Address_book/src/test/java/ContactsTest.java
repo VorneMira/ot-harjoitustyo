@@ -46,12 +46,31 @@ public class ContactsTest {
     public void luoUusiLapsiKayttaja() {
         user = new User("Ville", false);
         assertEquals("User name: Ville, Permission: Child, Contacts: ", user.toString());
+        assertEquals(false, user.isAdult());
     }
     
     @Test
     public void luoUusiAikuisKayttaja() {
         assertEquals("Mira", user.getName());
         assertEquals("User name: Mira, Permission: Adult, Contacts: ", user.toString());
+        assertEquals(true, user.isAdult());
+    }
+    
+    @Test
+    public void luoUusiKayttajaGuidilla() {
+        user = new User("Ville", 20, "GUIDITESTI");
+        assertEquals("GUIDITESTI", user.getGuid());
+    }
+    
+    @Test
+    public void luoUusiYstavaGuidillajaLapsenNimella() {
+        Contact guidContact = new Contact("LapsenNimi", "Liisa", "0404040404", "Katu 1", "Jussi", "044044044", "TESTGUID");
+        user.addContact(guidContact);
+        ArrayList<Contact> contacts = user.getContacts();
+        Contact addedContact = contacts.get(0);
+        assertEquals(addedContact.getChildName(), "LapsenNimi");
+        assertEquals(addedContact.getGuid(), "TESTGUID");
+        assertEquals(addedContact.toString(), "Liisa");
     }
     
     @Test

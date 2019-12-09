@@ -23,7 +23,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import mira.addressBook.dao.SqlUserDao;
 import mira.addressBook.logics.Contact;
 import mira.addressBook.logics.User;
 
@@ -34,20 +36,24 @@ import mira.addressBook.logics.User;
 public class AddressBookGUI extends Application {
 
     TableView contactTable = new TableView();
+    TableColumn<String, Contact> childName = new TableColumn<>("Child");
     TableColumn<String, Contact> friendName = new TableColumn<>("Name");
     TableColumn<String, Contact> friendPhone = new TableColumn<>("Phone number");
     TableColumn<String, Contact> friendAddress = new TableColumn<>("Address");
     TableColumn<String, Contact> parentName = new TableColumn<>("Parent");
     TableColumn<String, Contact> parentPhone = new TableColumn<>("Parent's phone");
+    Label loggedInLabel = new Label("");
     User user;
 
     @Override
     public void start(Stage primaryStage) {
+        childName.setCellValueFactory(new PropertyValueFactory<>("childName"));
         friendName.setCellValueFactory(new PropertyValueFactory<>("friendName"));
         friendPhone.setCellValueFactory(new PropertyValueFactory<>("friendPhone"));
         friendAddress.setCellValueFactory(new PropertyValueFactory<>("friendAddress"));
         parentName.setCellValueFactory(new PropertyValueFactory<>("parentName"));
         parentPhone.setCellValueFactory(new PropertyValueFactory<>("parentPhone"));
+        contactTable.getColumns().add(childName);
         contactTable.getColumns().add(friendName);
         contactTable.getColumns().add(friendPhone);
         contactTable.getColumns().add(friendAddress);
@@ -62,7 +68,12 @@ public class AddressBookGUI extends Application {
         MenuItem menuItem2 = new MenuItem("Add contact");
         MenuItem menuItem3 = new MenuItem("Exit");
         menuItem1.setOnAction(e -> {
-            System.out.println("Log in not implemented yet.");
+            try {
+                showLoginWindow();
+            } catch (Exception ex) {
+                System.out.println("exception: " + ex);
+            }
+            //System.out.println("Log in not implemented yet.");
         });
         menuItem2.setOnAction(e -> {
             showAddContactWindow(user);
@@ -75,7 +86,9 @@ public class AddressBookGUI extends Application {
         menu1.getItems().add(menuItem2);
         menu1.getItems().add(menuItem3);
 
-        VBox vbox = new VBox(menuBar, contactTable);
+        loggedInLabel.setText("Log in to use application.");
+        
+        VBox vbox = new VBox(menuBar, loggedInLabel, contactTable);
 
         Button btn = new Button();
         btn.setText("Show contacts");
@@ -89,10 +102,10 @@ public class AddressBookGUI extends Application {
 
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        
-        user = new User("Pekka Puupää", true);
-        user.addContact(new Contact("Pätkä", "555-1234567", "Pätkätie 8", "Justiina", "5559876543"));
-        showContacts(user);
+
+/*        user = new User("Pekka Puupää", true);
+        user.addContact(new Contact("Pätkä", "555-1234567", "Pätkätie 8", "Justiina", "5559876543"));*/
+        //showContacts(user);
         Scene scene = new Scene(vbox);
         scene.getStylesheets().add("AddressBookStyles.css");
 
@@ -118,7 +131,7 @@ public class AddressBookGUI extends Application {
         Button button2 = new Button("Save");
 
         button1.setOnAction(e -> {
-            addContactWindow.close();    
+            addContactWindow.close();
         });
         // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
@@ -150,6 +163,7 @@ public class AddressBookGUI extends Application {
         addContactWindow.setScene(scene);
         addContactWindow.showAndWait();
     }
+    
 
     private void showContacts(User user) {
         contactTable.getItems().clear();
@@ -159,6 +173,69 @@ public class AddressBookGUI extends Application {
         }
     }
 
+    private boolean loginUser(String username) {
+        SqlUserDao userDao = new SqlUserDao();
+        //SqlContactDao contactDao = new SqlContactDao();
+        User user = userDao.findByUsername(username);
+        if (user == null) {
+            System.out.println("user not found");
+            return false;
+        }
+        else {
+            System.out.println("user FOUND: "  + user);
+            //ArrayList<Contact> contacts = contactDao.getAllContacts(user);
+            System.out.println("CONTACTS");
+            for (Contact contact: user.getContacts()) {
+                System.out.println("Contact: " + contact);
+            }
+            showContacts(user);
+            this.user = user;
+            return true;
+        }
+    }
+
+    
+    
+    private void showLoginWindow() {
+        Stage loginWindow = new Stage();
+
+        Label label1 = new Label("Name");
+        TextField txtName = new TextField();
+        Button button1 = new Button("Cancel");
+        Button button2 = new Button("Login");
+        Label errorLabel = new Label("");
+        errorLabel.setTextFill(Color.RED);
+
+        button1.setOnAction(e -> {
+            loginWindow.close();
+        });
+        // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
+        button2.setOnAction(e -> {
+            boolean loginOk = loginUser(txtName.getText());
+            if (!loginOk) {
+                errorLabel.setText("Wrong user name");
+            }
+            else {
+                loggedInLabel.setText("Logged in user: " + this.user.getName());
+                loginWindow.close();
+            }
+        });
+
+        GridPane gridPane = new GridPane();
+
+        gridPane.add(label1, 0, 0, 1, 1);
+        gridPane.add(txtName, 1, 0, 1, 1);
+        gridPane.add(button1, 0, 1, 1, 1);
+        gridPane.add(button2, 1, 1, 1, 1);
+        gridPane.add(errorLabel, 0, 2, 2, 1);
+
+        Scene scene = new Scene(gridPane);
+
+        loginWindow.setTitle("Login");
+        loginWindow.setScene(scene);
+        loginWindow.showAndWait();
+    }
+    
     /**
      * @param args the command line arguments
      */
