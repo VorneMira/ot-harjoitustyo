@@ -8,5 +8,6 @@
 | 25.11.| 2    | Address book - checkstyle, dokumentointi |
 | 30.11.| 4    | Address book - Lisää uusi kontakti |
 | 01.12.| 5    | Address book - jar, virtuaalikoneella testaaminen, dokumentointi |
-| 08.12.| 8    | Tietokanta |
-| yht   | 27    | | 
+| 08.12.| 9    | Tietokantayhteys |
+| 08.12.| 1    | JavaDoc |
+| yht   | 29    | | 
