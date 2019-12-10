@@ -21,6 +21,11 @@ public class User {
     private static final int ADULT = 20;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
 
+    /**
+     * Konstruktori User luokalle.
+     * @param name käyttäjän nimi
+     * @param isAdult onko käyttäjä aikuinen
+     */
     public User(String name, boolean isAdult) {
         this.name = name;
         if (isAdult) {
@@ -30,6 +35,12 @@ public class User {
         }
     }
     
+    /** 
+     * Konstruktori User luokalle. Tällä saa tietokannasta haetun käyttäjän ilmentymän luotua.
+     * @param name käyttäjän nimi
+     * @param role käyttäjän rooli (10 child, 20 adult)
+     * @param guid guid
+     */
     public User(String name, int role, String guid) {
         this.name = name;
         if (role == ADULT) {
@@ -41,14 +52,23 @@ public class User {
         this.guid = guid;
     }
 
+    /**
+     * @return Guidin
+     */
     public String getGuid() {
         return this.guid;
     }
     
+    /**
+     * @return nimen
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * @return käyttöoikeuden Stringinä (Adult/Child)
+     */
     public String getPermissionName() {
         if (this.permission == ADULT) {
             return "Adult";
@@ -57,6 +77,9 @@ public class User {
         }
     }
     
+    /**
+     * @return true, jos käyttäjä on aikuinen, false jos lapsi
+     */
     public boolean isAdult() {
         if (this.permission == ADULT) {
             return true;
@@ -66,11 +89,18 @@ public class User {
         }
     }
 
+    /**
+     * Lisää yhteystiedon käyttäjälle
+     * @param contact lisättävä yhteystieto
+     */
     public void addContact(Contact contact) {
         this.contacts.add(contact);
 
     }
 
+    /**
+     * @return String esitys käyttäjästä. 
+     */
     public String toString() {
         String listOfContacts = "";
 
@@ -80,10 +110,16 @@ public class User {
         return "User name: " + this.name + ", Permission: " + this.getPermissionName() + ", Contacts: " + listOfContacts;
     }
 
+    /**
+     * @return yhteyshenkilöt ArrayListana
+     */
     public ArrayList<Contact> getContacts() {
         return contacts;
     }
     
+    /**
+     * Poistaa kaikki yhteyshenkilöt
+     */
     public void clearContacts() {
         contacts.clear();
     }

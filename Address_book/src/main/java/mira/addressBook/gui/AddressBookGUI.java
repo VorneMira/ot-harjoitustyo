@@ -45,6 +45,10 @@ public class AddressBookGUI extends Application {
     Label loggedInLabel = new Label("");
     User user;
 
+    /**
+     * Sovelluksen (JavaFX) käynnistäminen
+     * @param primaryStage primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         childName.setCellValueFactory(new PropertyValueFactory<>("childName"));

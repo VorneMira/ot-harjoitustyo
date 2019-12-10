@@ -23,6 +23,14 @@ public class Contact {
         this.friendName = friendName;
     }*/
 
+    /**
+     * Konstruktori yhteystiedolle (Contact)
+     * @param friendName ystävän nimi
+     * @param friendPhone ystävän puhelinnumero
+     * @param friendAddress ystävän osoite
+     * @param parentName vanhemman nimi
+     * @param parentPhone vanhemman puhelinnumero
+     */
     public Contact(String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone) {
         this.friendName = friendName;
         this.friendPhone = friendPhone;
@@ -31,6 +39,17 @@ public class Contact {
         this.parentPhone = parentPhone;
     }
     
+    /**
+     * Konstruktori yhteystiedolle (Contact). Tällä konstruktorilla saa luotua tietokannasta tuodun yhteystiedon,
+     * koska guid on annettavissa
+     * @param childName lapsen, jonka ystävä tämä yhteystieto on, nimi
+     * @param friendName ystävän nimi
+     * @param friendPhone ystävän puhelinnumero
+     * @param friendAddress ystävän osoite
+     * @param parentName vanhemman nimi
+     * @param parentPhone vanhemman puhelinnumero
+     * @param guid Guid (tietokannan tunniste)
+     */
     public Contact(String childName, String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone, String guid) {
         this.childName = childName;
         this.friendName = friendName;
@@ -69,6 +88,9 @@ public class Contact {
         return this.parentPhone;
     }
 
+    /**
+     * @return String esitys yhteystiedosta.
+     */
     public String toString() {
         return this.friendName;
     }

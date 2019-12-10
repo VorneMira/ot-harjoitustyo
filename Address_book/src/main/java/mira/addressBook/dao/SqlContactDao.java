@@ -21,7 +21,12 @@ import mira.addressBook.logics.User;
  */
 public class SqlContactDao {
     
-    
+    /**
+     * Hakee käyttäjän yhteystiedot tietokannasta. Jos käyttäjä on lapsi, hakee käyttäjän omat yhteystiedot. Jos käyttäjä on aikuinen,
+     * hakee kaikkien lapsikäyttäjien yhteystiedot.
+     * @param user käyttäjä
+     * @return yhteystiedot ArrayListana
+     */
     public ArrayList<Contact> getAllContacts(User user) {
         // Initialize connection variables.	
         String host = "testitietokanta2019.mysql.database.azure.com";

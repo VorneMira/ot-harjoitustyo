@@ -21,7 +21,12 @@ import mira.addressBook.logics.User;
  */
 public class SqlUserDao {
     
-    
+    /**
+     * Käyttäjän hakeminen tietokannasta
+     * @param username käyttäjän nimi, jota haetaan
+     * @return null, jos käyttäjää ei löydy. User luokan ilmentymän, jos käyttäjä löytyy. Käyttäjän yhteystiedot haetaan myös
+     * SqlContactDao:n avulla
+     */
     public User findByUsername(String username) {
         // Initialize connection variables.	
         String host = "testitietokanta2019.mysql.database.azure.com";
