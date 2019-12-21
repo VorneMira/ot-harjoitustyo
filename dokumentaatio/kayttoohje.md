@@ -18,9 +18,13 @@ Sovellus käynnistyy aloitusnäkymään:
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/startView.jpg" width="400">
 
-Kirjautuminen onnistuu valitsemalla File - Login, kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_.
+Kirjautuminen onnistuu valitsemalla File - Login, kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_:
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/loginView.jpg" width="400">
+
+Taulukkoon tulostuu yhteystietoja käyttöoikeuksien mukaisesti. 
+* Parent -oikeuksilla aukeaa kaikki omat ja lasten yhteystiedot.
+* Child -oikeuksilla aukeaa kyseisen lapsen omat yhteystiedot.
 
 ## Uuden käyttäjän luominen
 
