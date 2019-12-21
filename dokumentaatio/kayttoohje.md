@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [todoapp.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
+Lataa tiedosto [Address_book-1.0-SNAPSHOT.jar](https://github.com/MiraVorne77/ot-harjoitustyo/releases/)
 
 ## Konfigurointi
 
