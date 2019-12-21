@@ -18,7 +18,7 @@ Sovellus käynnistyy aloitusnäkymään:
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/startView.jpg" width="400">
 
-Kirjautuminen onnistuu valitsemalla File - Login, kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_:
+Kirjautuminen onnistuu valitsemalla _File - Login_, kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_:
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/loginView.jpg" width="400">
 
@@ -33,13 +33,11 @@ Taulukkoon tulostuu yhteystietoja käyttöoikeuksien mukaisesti.
 
 ## Uuden käyttäjän luominen
 
-Kirjautumisnäkymästä on mahdollista siirtyä uuden käyttäjän luomisnäkymään panikkeella _create new user_.
+Uuden käyttäjän luomisnäkymään voi siirtyä valitsemalla _File - Add New User_, kirjoittamalla uusi käyttäjätunnus, valitsemalla _Parent_, jos käyttäjä on aikuinen ja painamalla _Add User_ -nappia.
 
-Uusi käyttäjä luodaan syöttämällä tiedot syötekenttiin ja painamalla _create_
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/newUserView.jpg" width="400">
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-2.png" width="400">
-
-Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
+Käyttäjän luomisen jälkeen, käyttäjä voi kirjautua järjestelmään uudella käyttäjätunnuksella.
 
 ## Todojen luominen ja tehdyksi merkkaaminen
 
