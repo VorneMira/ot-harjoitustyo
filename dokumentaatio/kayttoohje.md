@@ -16,7 +16,7 @@ java -jar Address_book-1.0-SNAPSHOT.jar
 
 Sovellus käynnistyy aloitusnäkymään:
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-1.png" width="400">
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/startView.jpg" width="400">
 
 Kirjautuminen onnistuu kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_.
 
