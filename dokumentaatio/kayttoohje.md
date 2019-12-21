@@ -4,24 +4,17 @@ Lataa tiedosto [todoapp.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag
 
 ## Konfigurointi
 
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto _config.properties_, joka määrittelee käyttäjät ja todot tallettavien tiedostojen nimet. Tiedoston muoto on seuraava
-
-```
-userFile=users.txt
-todoFile=todos.txt
-```
-
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään komennolla 
 
 ```
-java -jar todoapp.jar
+java -jar Address_book-1.0-SNAPSHOT.jar
 ```
 
 ## Kirjautuminen
 
-Sovellus käynnistyy kirjautumisnäkymään:
+Sovellus käynnistyy aloitusnäkymään:
 
 <img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-1.png" width="400">
 
