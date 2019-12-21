@@ -33,18 +33,25 @@ Taulukkoon tulostuu yhteystietoja käyttöoikeuksien mukaisesti.
 
 ## Uuden käyttäjän luominen
 
-Uuden käyttäjän luomisnäkymään voi siirtyä valitsemalla _File - Add New User_, kirjoittamalla uusi käyttäjätunnus, valitsemalla _Parent_, jos käyttäjä on aikuinen ja painamalla _Add User_ -nappia.
+Uuden käyttäjän luomisnäkymään voi siirtyä valitsemalla _File - Add New User_. Tunnuksen luomisnäkymässä: 
+* Käyttäjä voi kirjoittaa uuden käyttäjätunnuksen. 
+* Valita _Parent_, jos käyttäjä on aikuinen.
+* Lisätä tunnuksen tietokantaan painamalla _Add User_ -nappia.
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/newUserView.jpg" width="400">
 
-Käyttäjän luomisen jälkeen, käyttäjä voi kirjautua järjestelmään uudella käyttäjätunnuksella.
+Uuden tunnuksen luomisen jälkeen käyttäjä voi kirjautua järjestelmään uudella käyttäjätunnuksella.
 
-## Todojen luominen ja tehdyksi merkkaaminen
+## Uuden yhteystiedon luominen ja poistaminen
 
-Onnistuneen kirjautumisen myötä siirrytään käyttäjien tekemättömät työt listaavaan näkymään
+Uusia yhteystietoja voi kirjoittaa valitsemalla _File - Add New Contact_
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-3.png" width="400">
+Alasvetovalikosta Parent-käyttäjä voi valita käyttäjän, jonka yhteystieto on kyseessä. Lapsi voi tehdä yhteystietoja vain itselleen.
 
-Näkymä mahdollistaa olemassaolevien todojen merkkaamisen tehdyksi painikkeella _done_ sekä uusien todojen luomisen kirjoittamalla syötekenttään tehtävän kuvauksen ja painamalla _create_. 
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/addContactView.jpg" width="400">
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_ käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään.
+Yhteystietoja voi poistaa valitsemalla taulukkonäkymässä yhteystiedon ja painamalla _Delete selected contact_ -nappia. 
+
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/deleteContactView.jpg" width="400">
+
+Voit poistua järjestelmästä valitsemalla _File - Exit_.
