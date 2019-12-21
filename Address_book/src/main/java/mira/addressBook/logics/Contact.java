@@ -12,12 +12,13 @@ package mira.addressBook.logics;
 public class Contact {
 
     private String guid = java.util.UUID.randomUUID().toString();
-    private String childName;
+    //private String childName;
     private String friendName;
     private String friendPhone;
     private String friendAddress;
     private String parentName;
     private String parentPhone;
+    private User user;
 
     /*public Contact(String friendName) {
         this.friendName = friendName;
@@ -50,8 +51,8 @@ public class Contact {
      * @param parentPhone vanhemman puhelinnumero
      * @param guid Guid (tietokannan tunniste)
      */
-    public Contact(String childName, String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone, String guid) {
-        this.childName = childName;
+    public Contact(/*String childName, */String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone, String guid) {
+        //this.childName = childName;
         this.friendName = friendName;
         this.friendPhone = friendPhone;
         this.friendAddress = friendAddress;
@@ -65,7 +66,12 @@ public class Contact {
     }
     
     public String getChildName() {
-        return this.childName;
+        if (this.user != null) {
+            return this.user.getName();
+        }
+        else {
+            return "";
+        }
     }
     
     public String getFriendName() {
@@ -86,6 +92,14 @@ public class Contact {
 
     public String getParentPhone() {
         return this.parentPhone;
+    }
+    
+    public User getUser() {
+        return this.user;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**

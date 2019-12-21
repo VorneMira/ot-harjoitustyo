@@ -17,8 +17,8 @@ public class User {
     private String guid = java.util.UUID.randomUUID().toString();
     private String name;
     private int permission;
-    private static final int CHILD = 10;
-    private static final int ADULT = 20;
+    public static final int CHILD = 10;
+    public static final int ADULT = 20;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
 
     /**
@@ -75,6 +75,10 @@ public class User {
         } else {
             return "Child";
         }
+    }
+    
+    public int getPermissionValue() {
+        return this.permission;
     }
     
     /**

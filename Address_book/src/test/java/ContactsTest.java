@@ -63,12 +63,11 @@ public class ContactsTest {
     }
     
     @Test
-    public void luoUusiYstavaGuidillajaLapsenNimella() {
-        Contact guidContact = new Contact("LapsenNimi", "Liisa", "0404040404", "Katu 1", "Jussi", "044044044", "TESTGUID");
+    public void luoUusiYstavaGuidilla() {
+        Contact guidContact = new Contact("Liisa", "0404040404", "Katu 1", "Jussi", "044044044", "TESTGUID");
         user.addContact(guidContact);
         ArrayList<Contact> contacts = user.getContacts();
         Contact addedContact = contacts.get(0);
-        assertEquals(addedContact.getChildName(), "LapsenNimi");
         assertEquals(addedContact.getGuid(), "TESTGUID");
         assertEquals(addedContact.toString(), "Liisa");
     }
