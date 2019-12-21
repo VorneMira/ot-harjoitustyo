@@ -23,8 +23,13 @@ Kirjautuminen onnistuu valitsemalla File - Login, kirjoittamalla olemassaoleva k
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/loginView.jpg" width="400">
 
 Taulukkoon tulostuu yhteystietoja käyttöoikeuksien mukaisesti. 
-* Parent -oikeuksilla aukeaa kaikki omat ja lasten yhteystiedot.
+* Parent -oikeuksilla aukeaa kaikki omat ja lasten yhteystiedot. Yhteystietoja voi lajitella taulukon kenttien mukaan.   
+
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/parentView.jpg" width="400">
+
 * Child -oikeuksilla aukeaa kyseisen lapsen omat yhteystiedot.
+
+<img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/childView.jpg" width="400">
 
 ## Uuden käyttäjän luominen
 
