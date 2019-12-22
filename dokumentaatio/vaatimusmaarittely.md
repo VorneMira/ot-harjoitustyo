@@ -12,11 +12,12 @@ Sovelluksella on kaksi käyttäjäroolia, perheen vanhempien käyttäjärooli, e
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä
+Sovellus koostuu viidestä eri näkymästä
 
 * Aloitusnäkymä. (TEHTY)
 * Kirjautumisnäkymä. (TEHTY)
 * Lisää uusi käyttäjä -näkymä. (TEHTY)
+* Lisää uusi yhteystieto -näkymä (TEHTY)
 * Taulukkonäkymä yhteystiedoista. (TEHTY)
 
 Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai kirjautumisnäkymään. Onnistunut kirjautuminen ohjaa käyttäjän vanhemman tai lapsen yhteystietojen taulukkonäkymään.

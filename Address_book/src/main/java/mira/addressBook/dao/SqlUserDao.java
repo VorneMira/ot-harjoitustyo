@@ -19,7 +19,7 @@ import mira.addressbook.logics.User;
  *
  * @author Mira Vorne
  */
-public class SqlUserDao extends SqlBaseDao {
+public class SqlUserDao extends SqlBaseDao implements UserDao {
 
     public SqlUserDao() {
 
