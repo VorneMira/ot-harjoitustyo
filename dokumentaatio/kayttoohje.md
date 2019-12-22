@@ -4,9 +4,9 @@ Lataa tiedosto [Address_book-1.0-SNAPSHOT.jar](https://github.com/MiraVorne77/ot
 
 ## Konfigurointi
 
-Sovellus käyttää tietokantaa, joka toimii tällä hetkellä Azure-palvelimella. 
+Sovellus käyttää tietokantaa, joka toimii tällä hetkellä Azure Database for MySQL palvelimella. 
 
-* Sovelluksen testaamista varten käytetään testitietokantaa, johon on generoitu testidata. 
+* Sovelluksen testaamista varten käytetään testitietokantaa, johon generoidaan testidataa testiajon aluksi. 
 
 * Sovellus käyttää tuotantotietokantaa, jossa on kaksi tietokantataulua, users ja contacts. Taulujen luonti SQL-komennoilla:
 
@@ -49,7 +49,7 @@ Kirjautuminen onnistuu valitsemalla _File - Login_, kirjoittamalla olemassaoleva
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/loginView.jpg" width="400">
 
 Taulukkoon tulostuu yhteystietoja käyttöoikeuksien mukaisesti. 
-* Parent -oikeuksilla aukeaa kaikki omat ja lasten yhteystiedot. Yhteystietoja voi lajitella taulukon kenttien mukaan.   
+* Parent -oikeuksilla aukeaa kaikki lasten yhteystiedot. Yhteystietoja voi lajitella taulukon kenttien mukaan.   
 
 <img src="https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/parentView.jpg" width="400">
 
