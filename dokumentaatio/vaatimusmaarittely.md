@@ -17,8 +17,7 @@ Sovellus koostuu neljästä eri näkymästä
 * Aloitusnäkymä. (TEHTY)
 * Kirjautumisnäkymä. (TEHTY)
 * Lisää uusi käyttäjä -näkymä. (TEHTY)
-* Lapsen omat ystävät -näkymä, josta voidaan lisätä myös uusia yhteystietoja. (TEHTY)
-* Vanhempien -näkymä, josta voidaan hakea tai lisätä lasten ystävien sekä heidän vanhempiensa yhteystietoja. (TEHTY)
+* Taulukkonäkymä yhteystiedoista. (TEHTY)
 
 Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai kirjautumisnäkymään. Onnistunut kirjautuminen ohjaa käyttäjän vanhemman tai lapsen yhteystietojen taulukkonäkymään.
 
