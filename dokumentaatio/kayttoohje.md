@@ -8,9 +8,27 @@ Sovellus käyttää tietokantaa, joka toimii tällä hetkellä Azure-palvelimell
 
 * Sovelluksen testaamista varten käytetään testitietokantaa, johon on generoitu testidata. 
 
-* Sovellus käyttää tuotantotietokantaa. Oman tuotantokannan voi luoda komennoilla:
+* Sovellus käyttää tuotantotietokantaa:
 
+CREATE TABLE `users` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `role` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
 
+CREATE TABLE `contacts` (
+  `id` varchar(50) NOT NULL,
+  `friendName` varchar(80) DEFAULT NULL,
+  `friendPhone` varchar(30) DEFAULT NULL,
+  `friendAddress` varchar(100) DEFAULT NULL,
+  `parentName` varchar(80) DEFAULT NULL,
+  `parentPhone` varchar(30) DEFAULT NULL,
+  `id_user` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_User_idx` (`id_user`),
+  CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) 
 
 ## Ohjelman käynnistäminen
 
