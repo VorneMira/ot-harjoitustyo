@@ -8,7 +8,7 @@ Sovellus käyttää tietokantaa, joka toimii tällä hetkellä Azure-palvelimell
 
 * Sovelluksen testaamista varten käytetään testitietokantaa, johon on generoitu testidata. 
 
-* Sovellus käyttää tuotantotietokantaa:
+* Sovellus käyttää tuotantotietokantaa, jossa on kaksi tietokantataulua, users ja contacts. Taulujen luonti SQL-komennoilla:
 
 CREATE TABLE `users` (  
   `id` varchar(50) NOT NULL,  
