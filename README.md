@@ -16,6 +16,8 @@
 
 [Viikko 6](https://github.com/MiraVorne77/ot-harjoitustyo/releases/tag/Viikko6)
 
+[Final](https://github.com/MiraVorne77/ot-harjoitustyo/releases/tag/Final)
+
 ## Komentorivitoiminnot
 
 ### Testaus
