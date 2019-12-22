@@ -1,4 +1,4 @@
-package mira.addressBook.gui;
+package mira.addressbook.gui;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,10 +30,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import mira.addressBook.dao.SqlUserDao;
-import mira.addressBook.dao.SqlContactDao;
-import mira.addressBook.logics.Contact;
-import mira.addressBook.logics.User;
+import mira.addressbook.dao.SqlUserDao;
+import mira.addressbook.dao.SqlContactDao;
+import mira.addressbook.logics.Contact;
+import mira.addressbook.logics.User;
 
 /**
  *
@@ -49,6 +49,10 @@ public class AddressBookGUI extends Application {
     TableColumn<String, Contact> parentName = new TableColumn<>("Parent");
     TableColumn<String, Contact> parentPhone = new TableColumn<>("Parent's phone");
     Label loggedInLabel = new Label("");
+    MenuItem menuItem1;
+    MenuItem menuItem2;
+    MenuItem menuItem3;
+    MenuItem menuItem4;
     User user;
 
     /**
@@ -75,10 +79,11 @@ public class AddressBookGUI extends Application {
         Menu menu1 = new Menu("File");
 
         menuBar.getMenus().add(menu1);
-        MenuItem menuItem1 = new MenuItem("Log in");
-        MenuItem menuItem2 = new MenuItem("Add contact");
-        MenuItem menuItem4 = new MenuItem("Add new user");
-        MenuItem menuItem3 = new MenuItem("Exit");
+        menuItem1 = new MenuItem("Log in");
+        menuItem2 = new MenuItem("Add contact");
+        menuItem2.setDisable(true);
+        menuItem4 = new MenuItem("Add new user");
+        menuItem3 = new MenuItem("Exit");
         menuItem1.setOnAction(e -> {
             try {
                 showLoginWindow();
@@ -88,13 +93,21 @@ public class AddressBookGUI extends Application {
             //System.out.println("Log in not implemented yet.");
         });
         menuItem2.setOnAction(e -> {
-            showAddContactWindow(user);
+            try {
+                showAddContactWindow(user);
+            } catch (Exception ex) {
+                System.out.println("exception: " + ex);
+            }
         });
         menuItem3.setOnAction(e -> {
             Platform.exit();
         });
         menuItem4.setOnAction(e -> {
-            showAddNewUserWindow();
+            try {
+                showAddNewUserWindow();
+            } catch (Exception ex) {
+                System.out.println("exception: " + ex);
+            }
         });
 
         menu1.getItems().add(menuItem1);
@@ -109,16 +122,17 @@ public class AddressBookGUI extends Application {
         btnDelete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
                 ObservableList<Contact> row, allRows;
                 allRows = contactTable.getItems();
                 row = contactTable.getSelectionModel().getSelectedItems();
                 for (Contact contact : row) {
-                    //System.out.println("poistetaan " + c.getGuid());
-                    deleteContact(contact);
-                    allRows.remove(contact);
+                    try {
+                        deleteContact(contact);
+                        allRows.remove(contact);
+                    } catch (Exception ex) {
+                        System.out.println("Exception: " + ex);
+                    }
                 }
-//                row.forEach(allRows::remove);
             }
         });
 
@@ -132,8 +146,8 @@ public class AddressBookGUI extends Application {
         primaryStage.show();
     }
 
-    private ArrayList<User> getAllChildUsers(User user) {
-        if (user.isAdult()) {
+    private ArrayList<User> getAllChildUsers(User user) throws Exception {
+        if (user.isParent()) {
             SqlUserDao dao = new SqlUserDao();
             return dao.getAllChildUsers();
         } else {
@@ -142,13 +156,13 @@ public class AddressBookGUI extends Application {
             return users;
         }
     }
-    
-    private void deleteContact(Contact contact) {
+
+    private void deleteContact(Contact contact) throws Exception {
         SqlContactDao dao = new SqlContactDao();
         dao.deleteContact(contact);
     }
 
-    private void showAddContactWindow(User user) {
+    private void showAddContactWindow(User user) throws Exception {
         Stage addContactWindow = new Stage();
 
         Label label1 = new Label("Name");
@@ -194,18 +208,22 @@ combo.setItems(airports);*/
             if (usersCombo.getValue() == null) {
                 infoLabel.setText("Please select Child!");
             } else {
-                Contact newContact = new Contact(txtName.getText(), txtPhone.getText(), txtAddress.getText(), txtParent.getText(), txtParentPhone.getText());
+                try {
+                    Contact newContact = new Contact(txtName.getText(), txtPhone.getText(), txtAddress.getText(), txtParent.getText(), txtParentPhone.getText());
 
-                //User childUser
-                // KORJATTAVA
-                newContact.setUser(usersCombo.getValue());
+                    //User childUser
+                    // KORJATTAVA
+                    newContact.setUser(usersCombo.getValue());
 
-                SqlContactDao contactDao = new SqlContactDao();
-                contactDao.addContact(newContact);
-                user.addContact(newContact);
-                showContacts(user);
-                System.out.println("new contact added");
+                    SqlContactDao contactDao = new SqlContactDao();
+                    contactDao.addContact(newContact);
+                    user.addContact(newContact);
+                    showContacts(user);
+                    System.out.println("new contact added");
 //            addContactWindow.close();    
+                } catch (Exception ex) {
+                    infoLabel.setText("Exception: " + ex);
+                }
             }
         });
 
@@ -279,7 +297,7 @@ combo.setItems(airports);*/
         });
     }
 
-    private boolean loginUser(String username) {
+    private boolean loginUser(String username) throws Exception {
         SqlUserDao userDao = new SqlUserDao();
         //SqlContactDao contactDao = new SqlContactDao();
         User user = userDao.findByUsername(username);
@@ -314,12 +332,17 @@ combo.setItems(airports);*/
         });
         // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
-            boolean loginOk = loginUser(txtName.getText());
-            if (!loginOk) {
-                errorLabel.setText("Wrong user name");
-            } else {
-                loggedInLabel.setText("Logged in user: " + this.user.getName());
-                loginWindow.close();
+            try {
+                boolean loginOk = loginUser(txtName.getText());
+                if (!loginOk) {
+                    errorLabel.setText("Wrong user name");
+                } else {
+                    loggedInLabel.setText("Logged in user: " + this.user.getName());
+                    menuItem2.setDisable(false);
+                    loginWindow.close();
+                }
+            } catch (Exception ex) {
+                errorLabel.setText("Connection problem: " + ex);
             }
         });
 
@@ -338,7 +361,7 @@ combo.setItems(airports);*/
         loginWindow.showAndWait();
     }
 
-    private User addUser(String username, boolean isAdult) {
+    private User addUser(String username, boolean isAdult) throws Exception {
         SqlUserDao userDao = new SqlUserDao();
         //SqlContactDao contactDao = new SqlContactDao();
 
@@ -360,18 +383,22 @@ combo.setItems(airports);*/
         Button button1 = new Button("Cancel");
         Button button2 = new Button("Add User");
         Label infoLabel = new Label("");
-        CheckBox checkBox1 = new CheckBox("Adult");
+        CheckBox checkBox1 = new CheckBox("Parent user");
 
         button1.setOnAction(e -> {
             addNewUserWindow.close();
         });
         // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
-            User user = addUser(txtName.getText(), checkBox1.isSelected());
-            if (user == null) {
-                infoLabel.setText("User not added. User with same name.");
-            } else {
-                infoLabel.setText("User added.");
+            try {
+                User user = addUser(txtName.getText(), checkBox1.isSelected());
+                if (user == null) {
+                    infoLabel.setText("User not added. User with same name.");
+                } else {
+                    infoLabel.setText("User added.");
+                }
+            } catch (Exception ex) {
+                infoLabel.setText("Exception: " + ex);
             }
         });
 

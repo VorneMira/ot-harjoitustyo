@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mira.addressBook;
+package mira.addressbook;
 
-import mira.addressBook.gui.AddressBookGUI;
+import mira.addressbook.gui.AddressBookGUI;
 /**
  *
  * @author Mira Vorne

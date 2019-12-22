@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mira.addressBook.logics;
+package mira.addressbook.logics;
 
 /**
  *
@@ -68,8 +68,7 @@ public class Contact {
     public String getChildName() {
         if (this.user != null) {
             return this.user.getName();
-        }
-        else {
+        } else {
             return "";
         }
     }

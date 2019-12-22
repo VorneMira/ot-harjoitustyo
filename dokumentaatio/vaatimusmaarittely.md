@@ -14,30 +14,30 @@ Sovelluksella on kaksi käyttäjäroolia, perheen vanhempien käyttäjärooli, e
 
 Sovellus koostuu neljästä eri näkymästä
 
-* Kirjautumis-näkymä.
+* Aloitusnäkymä. (TEHTY)
+* Kirjautumisnäkymä. (TEHTY)
 * Lisää uusi käyttäjä -näkymä. (TEHTY)
 * Lapsen omat ystävät -näkymä, josta voidaan lisätä myös uusia yhteystietoja. (TEHTY)
 * Vanhempien -näkymä, josta voidaan hakea tai lisätä lasten ystävien sekä heidän vanhempiensa yhteystietoja. (TEHTY)
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän yhteystietoihin tai vanhempien näkymään.
+Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai kirjautumisnäkymään. Onnistunut kirjautuminen ohjaa käyttäjän vanhemman tai lapsen yhteystietojen taulukkonäkymään.
 
 ## Perusversion tarjoama toiminnallisuus
 
 ### Ennen kirjautumista
 
-- käyttäjä voi luoda järjestelmään käyttäjätunnuksen
-  - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 3 merkkiä
+- käyttäjä voi luoda järjestelmään käyttäjätunnuksen.
+  - Käyttäjälle voi antaa vanhempi -oikeudet.
 
-- käyttäjä voi kirjautua järjestelmään
-  - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
-  - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
-
+- käyttäjä voi kirjautua järjestelmään.
+  - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle.
+  
 ### Kirjautumisen jälkeen
 
 - Lapsi-käyttäjä näkee omien ystäviensä yhteystiedot.
 
 - Lapsi-käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
-  - luotu yhteystieto näkyy ainoastaan sen luoneelle lapsi-käyttäjälle tai vanhemmat-käyttäjälle.
+  - luotu yhteystieto näkyy ainoastaan sen luoneelle lapsi-käyttäjälle tai vanhempi-käyttäjälle.
 
 - Lapsi-käyttäjä voi kirjautua ulos järjestelmästä.
 
@@ -45,7 +45,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - Vanhempi-käyttäjä voi hakea yhteystietoja tietyn lapsensa mukaan.
 
-- Vanhempi-käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
+- Käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
   - luotu yhteystieto näkyy ainoastaan sille liittyvälle lapsi-käyttäjälle tai vanhemmat-käyttäjälle.
 
 - Vanhempi-käyttäjä voi kirjautua ulos järjestelmästä.

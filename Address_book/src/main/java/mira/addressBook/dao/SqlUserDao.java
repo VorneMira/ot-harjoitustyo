@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mira.addressBook.dao;
+package mira.addressbook.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,53 +12,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
-import mira.addressBook.logics.Contact;
-import mira.addressBook.logics.User;
+import mira.addressbook.logics.Contact;
+import mira.addressbook.logics.User;
 
 /**
  *
  * @author Mira Vorne
  */
-public class SqlUserDao {
+public class SqlUserDao extends SqlBaseDao {
 
-    private Connection connectToDB() {
-        // Initialize connection variables.	
-        String host = "testitietokanta2019.mysql.database.azure.com";
-        String database = "addressbook";
-        String sqluser = "abdemouser@testitietokanta2019";
-        String password = "Suomi102";
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            //throw new ClassNotFoundException("Mysql driver NOT detected in library path.", e);
-            System.out.println("SqlUserDao.findByUsername: Mysql driver NOT detected in library path.: " + e);
-        }
-        System.out.println("mysql driver loaded succesfully");
+    public SqlUserDao() {
 
-        Connection connection = null;
-
-        // Initialize connection object
-        try {
-            String url = String.format("jdbc:mysql://%s/%s", host, database);
-
-            // Set connection properties.
-            Properties properties = new Properties();
-            properties.setProperty("user", sqluser);
-            properties.setProperty("password", password);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
-            properties.setProperty("requireSSL", "false");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        } catch (SQLException e) {
-            System.out.println("Failed to create connection to database.: " + e);
-//            throw new SQLException("Failed to create connection to database.", e);
-        }
-        return connection;
     }
 
-    public boolean addUser(User user) {
+    public SqlUserDao(boolean useTestDB) {
+        super(useTestDB);
+//this.useTestDB = useTestDB;
+    }
+
+    public boolean addUser(User user) throws Exception {
         if (findByUsername(user.getName()) != null) {
             // user exists
             return false;
@@ -71,28 +43,25 @@ public class SqlUserDao {
             statement.setInt(2, user.getPermissionValue());
             statement.setString(3, user.getGuid());
             int count = statement.executeUpdate();
-            /*if (results.first()) {
-                    String uname = results.getString(1);
-                    int role = results.getInt(2);
-                    String guid = results.getString(3);
-                    User user = new User(uname, role, guid);
-                    SqlContactDao contactDao = new SqlContactDao();
-                    ArrayList<Contact> contacts = contactDao.getAllContacts(user);
-                    user.clearContacts();
-                    for (Contact contact: contacts) {
-                        user.addContact(contact);
-                    }
-                    return user;
-                }
-                else {
-                    return null;
-                }*/
         } catch (SQLException e) {
-            //throw new SQLException("Encountered an error when executing given sql statement.", e);
-            System.out.println("Encountered an error when executing given sql statement." + e);
-            return false;
+            throw new SQLException("Encountered an error when executing given sql statement.", e);
         }
         return true;
+    }
+
+    private User createUserFromResultSet(ResultSet results) throws Exception {
+        String uname = results.getString(1);
+        int role = results.getInt(2);
+        String guid = results.getString(3);
+        User user = new User(uname, role, guid);
+        user.clearContacts();
+        SqlContactDao contactDao = new SqlContactDao();
+        ArrayList<Contact> contacts = contactDao.getAllContacts(user);
+        for (Contact contact : contacts) {
+            user.addContact(contact);
+        }
+
+        return user;
     }
 
     /**
@@ -103,69 +72,41 @@ public class SqlUserDao {
      * käyttäjä löytyy. Käyttäjän yhteystiedot haetaan myös SqlContactDao:n
      * avulla
      */
-    public User findByUsername(String username) {
+    public User findByUsername(String username) throws Exception {
         Connection connection = connectToDB();
 
-        if (connection != null) {
-            System.out.println("Successfully created connection to database.");
-
-            // Perform some SQL queries over the connection.
-            try {
-                PreparedStatement statement = connection.prepareStatement("SELECT name, role, id from users WHERE name = ?");
-                statement.setString(1, username);
-                ResultSet results = statement.executeQuery();
-                if (results.first()) {
-                    String uname = results.getString(1);
-                    int role = results.getInt(2);
-                    String guid = results.getString(3);
-                    User user = new User(uname, role, guid);
-                    SqlContactDao contactDao = new SqlContactDao();
-                    ArrayList<Contact> contacts = contactDao.getAllContacts(user);
-                    user.clearContacts();
-                    for (Contact contact : contacts) {
-                        user.addContact(contact);
-                    }
-                    return user;
-                } else {
-                    return null;
-                }
-            } catch (SQLException e) {
-                //throw new SQLException("Encountered an error when executing given sql statement.", e);
-                System.out.println("Encountered an error when executing given sql statement." + e);
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT name, role, id from users WHERE name = ?");
+            statement.setString(1, username);
+            ResultSet results = statement.executeQuery();
+            if (results.first()) {
+                User user = createUserFromResultSet(results);
+                return user;
+            } else {
+                return null;
             }
-        } else {
-            System.out.println("Failed to create connection to database.");
+        } catch (SQLException e) {
+            throw new SQLException("Encountered an error when executing given sql statement.", e);
         }
-        System.out.println("Execution finished.");
-        return null;
     }
 
-    public ArrayList<User> getAllChildUsers() {
+    public ArrayList<User> getAllChildUsers() throws Exception {
         Connection connection = connectToDB();
         ArrayList<User> childUsers = new ArrayList<>();
 
-        if (connection != null) {
-            System.out.println("Successfully created connection to database.");
+        // Perform some SQL queries over the connection.
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT name, role, id from users WHERE role = ?");
+            statement.setInt(1, User.CHILD);
+            ResultSet results = statement.executeQuery();
+            while (results.next()) {
+                User user = new User(results.getString(1), results.getInt(2), results.getString(3));
 
-            // Perform some SQL queries over the connection.
-            try {
-                PreparedStatement statement = connection.prepareStatement("SELECT name, role, id from users WHERE role = ?");
-                statement.setInt(1, User.CHILD);
-                ResultSet results = statement.executeQuery();
-                while (results.next()) {
-                    User user = new User(results.getString(1), results.getInt(2), results.getString(3));
-
-                    childUsers.add(user);
-                }
-                return childUsers;
-            } catch (SQLException e) {
-                //throw new SQLException("Encountered an error when executing given sql statement.", e);
-                System.out.println("Encountered an error when executing given sql statement." + e);
+                childUsers.add(user);
             }
-        } else {
-            System.out.println("Failed to create connection to database.");
+            return childUsers;
+        } catch (SQLException e) {
+            throw new SQLException("Encountered an error when executing given sql statement.", e);
         }
-        System.out.println("Execution finished.");
-        return null;
     }
 }

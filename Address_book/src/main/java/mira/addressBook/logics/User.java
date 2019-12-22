@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mira.addressBook.logics;
+package mira.addressbook.logics;
 
-import mira.addressBook.logics.Contact;
+import mira.addressbook.logics.Contact;
 import java.util.ArrayList;
 
 /**
@@ -18,18 +18,18 @@ public class User {
     private String name;
     private int permission;
     public static final int CHILD = 10;
-    public static final int ADULT = 20;
+    public static final int PARENT = 20;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
 
     /**
      * Konstruktori User luokalle.
      * @param name käyttäjän nimi
-     * @param isAdult onko käyttäjä aikuinen
+     * @param isParent onko käyttäjä aikuinen
      */
-    public User(String name, boolean isAdult) {
+    public User(String name, boolean isParent) {
         this.name = name;
-        if (isAdult) {
-            this.permission = ADULT;
+        if (isParent) {
+            this.permission = PARENT;
         } else {
             this.permission = CHILD;
         }
@@ -38,15 +38,14 @@ public class User {
     /** 
      * Konstruktori User luokalle. Tällä saa tietokannasta haetun käyttäjän ilmentymän luotua.
      * @param name käyttäjän nimi
-     * @param role käyttäjän rooli (10 child, 20 adult)
+     * @param role käyttäjän rooli (10 child, 20 parent)
      * @param guid guid
      */
     public User(String name, int role, String guid) {
         this.name = name;
-        if (role == ADULT) {
-            this.permission = ADULT;
-        }
-        else {
+        if (role == PARENT) {
+            this.permission = PARENT;
+        } else {
             this.permission = CHILD;
         }
         this.guid = guid;
@@ -70,8 +69,8 @@ public class User {
      * @return käyttöoikeuden Stringinä (Adult/Child)
      */
     public String getPermissionName() {
-        if (this.permission == ADULT) {
-            return "Adult";
+        if (this.permission == PARENT) {
+            return "Parent";
         } else {
             return "Child";
         }
@@ -84,13 +83,8 @@ public class User {
     /**
      * @return true, jos käyttäjä on aikuinen, false jos lapsi
      */
-    public boolean isAdult() {
-        if (this.permission == ADULT) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public boolean isParent() {
+        return this.permission == PARENT;
     }
 
     /**
