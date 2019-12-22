@@ -4,6 +4,14 @@ Lataa tiedosto [Address_book-1.0-SNAPSHOT.jar](https://github.com/MiraVorne77/ot
 
 ## Konfigurointi
 
+Sovellus käyttää tietokantaa, joka toimii tällä hetkellä Azure-palvelimella. 
+
+* Sovelluksen testaamista varten käytetään testitietokantaa, johon on generoitu testidata. 
+
+* Sovellus käyttää tuotantotietokantaa. Oman tuotantokannan voi luoda komennoilla:
+
+
+
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään komennolla 

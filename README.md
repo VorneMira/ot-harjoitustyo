@@ -6,10 +6,10 @@
 
 ## Dokumentaatio   
 * [Vaatimusmäärittely](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
-* [Arkkitehtuuri](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+* [Arkkitehtuurikuvaus](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 * [Työaikakirjanpito](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
-
 * [Käyttöohje](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+* [Testausdokumentti](https://github.com/MiraVorne77/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
 
 ## Releaset
 [Viikko 5](https://github.com/MiraVorne77/ot-harjoitustyo/releases/tag/Viikko5)
