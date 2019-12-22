@@ -43,7 +43,7 @@ Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä uuden käyttä
 
 - Vanhempi-käyttäjä näkee lastensa ystävien ja heidän vanhempiensa yhteystiedot.
 
-- Vanhempi-käyttäjä voi hakea yhteystietoja tietyn lapsensa mukaan.
+- Vanhempi-käyttäjä voi järjestää yhteystietoja tietyn lapsensa mukaan.
 
 - Käyttäjä voi luoda uuden tai poistaa vanhan yhteystiedon.
   - luotu yhteystieto näkyy ainoastaan sille liittyvälle lapsi-käyttäjälle tai vanhemmat-käyttäjälle.
