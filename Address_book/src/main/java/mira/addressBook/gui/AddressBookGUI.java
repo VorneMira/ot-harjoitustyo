@@ -146,6 +146,14 @@ public class AddressBookGUI extends Application {
         primaryStage.show();
     }
 
+    /** 
+     * Palauttaa kaikki lapsikäyttäjät, jotka käyttäjä saa nähdä.
+     * Jos kyseessä on lapsikäyttäjä, palauttaa ArrayListan, jossa on vain käyttäjä itse
+     * Jos kyseessä on vanehmpi, palauttaa ArrayListan, jossa on kaikki lapsikäyttäjät
+     * @param user Käyttäjä, jonka perusteella palautetaan lapsikäyttäjät
+     * @return ArrayList<User> lista lapsikäyttäjistä.
+     * @throws Exception 
+     */
     private ArrayList<User> getAllChildUsers(User user) throws Exception {
         if (user.isParent()) {
             SqlUserDao dao = new SqlUserDao();
@@ -157,11 +165,25 @@ public class AddressBookGUI extends Application {
         }
     }
 
+    /** 
+     * Poistaa yhteystiedon tietokannasta
+     * 
+     * @param contact poistettava yhteystieto
+     * @throws Exception 
+     */
     private void deleteContact(Contact contact) throws Exception {
         SqlContactDao dao = new SqlContactDao();
         dao.deleteContact(contact);
     }
 
+    /** 
+     * Näyttää uuden yhteystiedon lisäysikkunan. 
+     * Jos käyttäjä on vanhempi, valittavaksi tulee kenelle lapselle yhteystieto lisätään.
+     * Jos käyttäjä on lapsi, yhteystieto lisätään käyttäjälle itselleen.
+     * 
+     * @param user Käyttäjä, joka käyttää sovellusta
+     * @throws Exception 
+     */
     private void showAddContactWindow(User user) throws Exception {
         Stage addContactWindow = new Stage();
 
@@ -196,23 +218,16 @@ public class AddressBookGUI extends Application {
                         -> ap.getName().equals(string)).findFirst().orElse(null);
             }
         });
-        /*
-combo.setItems(airports);*/
 
         button1.setOnAction(e -> {
-            //System.out.println("selected user: " + usersCombo.getValue());
             addContactWindow.close();
         });
-        // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
             if (usersCombo.getValue() == null) {
                 infoLabel.setText("Please select Child!");
             } else {
                 try {
                     Contact newContact = new Contact(txtName.getText(), txtPhone.getText(), txtAddress.getText(), txtParent.getText(), txtParentPhone.getText());
-
-                    //User childUser
-                    // KORJATTAVA
                     newContact.setUser(usersCombo.getValue());
 
                     SqlContactDao contactDao = new SqlContactDao();
@@ -220,7 +235,6 @@ combo.setItems(airports);*/
                     user.addContact(newContact);
                     showContacts(user);
                     System.out.println("new contact added");
-//            addContactWindow.close();    
                 } catch (Exception ex) {
                     infoLabel.setText("Exception: " + ex);
                 }
@@ -252,8 +266,14 @@ combo.setItems(airports);*/
         addContactWindow.showAndWait();
     }
 
+    /** 
+     * Lisää käyttäjän yhteyshenkilöt contactTable:en
+     * Jos kyseessä on lapsikäyttäjä, näytetään vain omat yhteyshenkilöt
+     * Jos kyseessä on vanhempi, näytetään kaikkien lasten yhteyshenkilöt
+     * 
+     * @param user Käyttäjä, jonka perusteella yhteyshenkilöt näytetään.
+     */
     private void showContacts(User user) {
-        System.out.println("showContacts");
         contactTable.getItems().clear();
         ArrayList<Contact> contacts = user.getContacts();
         for (int i = 0; i < contacts.size(); i++) {
@@ -297,26 +317,29 @@ combo.setItems(airports);*/
         });
     }
 
+    /** 
+     * Käyttäjän sisäänkirjautuminen
+     * 
+     * 
+     * @param username käyttäjänimi, joka kirjataan sisään
+     * @return true, jos käyttäjä löytyi. false, jos käyttäjää ei löydy
+     * @throws Exception 
+     */
     private boolean loginUser(String username) throws Exception {
         SqlUserDao userDao = new SqlUserDao();
-        //SqlContactDao contactDao = new SqlContactDao();
         User user = userDao.findByUsername(username);
         if (user == null) {
-            System.out.println("user not found");
             return false;
         } else {
-            System.out.println("user FOUND: " + user);
-            //ArrayList<Contact> contacts = contactDao.getAllContacts(user);
-            System.out.println("CONTACTS");
-            for (Contact contact : user.getContacts()) {
-                System.out.println("Contact: " + contact);
-            }
             showContacts(user);
             this.user = user;
             return true;
         }
     }
 
+    /** 
+     * Sisäänkirjausikkunan näyttäminen
+     */
     private void showLoginWindow() {
         Stage loginWindow = new Stage();
 
@@ -330,7 +353,6 @@ combo.setItems(airports);*/
         button1.setOnAction(e -> {
             loginWindow.close();
         });
-        // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
             try {
                 boolean loginOk = loginUser(txtName.getText());
@@ -361,11 +383,18 @@ combo.setItems(airports);*/
         loginWindow.showAndWait();
     }
 
-    private User addUser(String username, boolean isAdult) throws Exception {
+    /** 
+     * Käyttäjän lisääminen
+     * 
+     * @param username käyttäjänimi, joka lisätään
+     * @param isParent onko lisättävä käyttäjä vanhempi
+     * @return lisätyn käyttäjän User olio 
+     * @throws Exception 
+     */
+    private User addUser(String username, boolean isParent) throws Exception {
         SqlUserDao userDao = new SqlUserDao();
-        //SqlContactDao contactDao = new SqlContactDao();
 
-        User user = new User(username, isAdult);
+        User user = new User(username, isParent);
         boolean ok = userDao.addUser(user);
         if (ok) {
             return user;
@@ -375,6 +404,10 @@ combo.setItems(airports);*/
 
     }
 
+    /** 
+     * Käyttäjän lisäämisikkunan näyttäminen
+     * 
+     */
     private void showAddNewUserWindow() {
         Stage addNewUserWindow = new Stage();
 
@@ -388,7 +421,6 @@ combo.setItems(airports);*/
         button1.setOnAction(e -> {
             addNewUserWindow.close();
         });
-        // String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone
         button2.setOnAction(e -> {
             try {
                 User user = addUser(txtName.getText(), checkBox1.isSelected());

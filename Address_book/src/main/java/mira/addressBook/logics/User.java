@@ -51,23 +51,14 @@ public class User {
         this.guid = guid;
     }
 
-    /**
-     * @return Guidin
-     */
     public String getGuid() {
         return this.guid;
     }
     
-    /**
-     * @return nimen
-     */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * @return käyttöoikeuden Stringinä (Adult/Child)
-     */
     public String getPermissionName() {
         if (this.permission == PARENT) {
             return "Parent";
@@ -81,7 +72,7 @@ public class User {
     }
     
     /**
-     * @return true, jos käyttäjä on aikuinen, false jos lapsi
+     * @return true, jos käyttäjä on vanhempi, false jos lapsi
      */
     public boolean isParent() {
         return this.permission == PARENT;
@@ -93,7 +84,6 @@ public class User {
      */
     public void addContact(Contact contact) {
         this.contacts.add(contact);
-
     }
 
     /**
@@ -108,9 +98,6 @@ public class User {
         return "User name: " + this.name + ", Permission: " + this.getPermissionName() + ", Contacts: " + listOfContacts;
     }
 
-    /**
-     * @return yhteyshenkilöt ArrayListana
-     */
     public ArrayList<Contact> getContacts() {
         return contacts;
     }
@@ -121,10 +108,4 @@ public class User {
     public void clearContacts() {
         contacts.clear();
     }
-    /*public static void main(String[] args){
-        User user = new User("Pekka", true);
-        Contact contact = new Contact("Lauri");
-        user.addContact(contact);
-        System.out.println(user);
-    } */
 }

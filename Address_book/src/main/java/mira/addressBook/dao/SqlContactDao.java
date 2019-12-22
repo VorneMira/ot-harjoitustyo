@@ -30,6 +30,12 @@ public class SqlContactDao extends SqlBaseDao {
         super(useTestDB);
     }
 
+    /**
+     * Lisää kontakti tietokantaan
+     * 
+     * @param contact lisättävä kontakti
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     public void addContact(Contact contact) throws Exception {
         Connection connection = connectToDB();
 
@@ -51,6 +57,12 @@ public class SqlContactDao extends SqlBaseDao {
         }
     }
 
+    /**
+     * Poistaa kontaktin tietokannasta
+     * 
+     * @param contact Poistettava kontakti
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     public void deleteContact(Contact contact) throws Exception {
         Connection connection = connectToDB();
         if (connection != null) {
@@ -72,6 +84,14 @@ public class SqlContactDao extends SqlBaseDao {
         System.out.println("Execution finished.");
     }
 
+    /** 
+     * Luo PreparedStatement olio yhteystietojen hakemista varten
+     * 
+     * @param user Käyttäjä, jonka yhteystietoja haetaan
+     * @param connection Tietokantayhteys
+     * @return Palauttaa luodun PreparedStatement olion
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     private PreparedStatement getStatementForAllContacts(User user, Connection connection) throws Exception {
         String query;
         String childQuery = "SELECT c.id, u.name, c.friendName, c.friendPhone, c.friendAddress, c.parentName, c.parentPhone, u.id AS user_id, u.role from contacts c, users u WHERE u.id = c.id_user and c.id_user = ?";
@@ -99,6 +119,7 @@ public class SqlContactDao extends SqlBaseDao {
      *
      * @param user käyttäjä
      * @return yhteystiedot ArrayListana
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
      */
     public ArrayList<Contact> getAllContacts(User user) throws Exception {
         ArrayList<Contact> contacts = new ArrayList();

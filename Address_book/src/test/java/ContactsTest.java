@@ -33,8 +33,6 @@ public class ContactsTest {
     public void setUp() {
         user = new User("Mira", true);
         contact = new Contact("Katja", "050505050", "Juhanintie 1", "Anne", "040404040");
-        
-
     }
 
     @AfterClass
@@ -106,15 +104,6 @@ public class ContactsTest {
 
     @Test
     public void yhteystietoYstavaVanhempi() {
-        assertEquals(contact.getFriendName(), "Katja");
-        assertEquals(contact.getFriendPhone(), "050505050");
-        assertEquals(contact.getFriendAddress(), "Juhanintie 1");
-        assertEquals(contact.getParentName(), "Anne");
-        assertEquals(contact.getParentPhone(), "040404040");
-    }
-
-    @Test
-    public void lisaaYhteystieto() {
         assertEquals(contact.getFriendName(), "Katja");
         assertEquals(contact.getFriendPhone(), "050505050");
         assertEquals(contact.getFriendAddress(), "Juhanintie 1");

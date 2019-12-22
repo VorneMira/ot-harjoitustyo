@@ -27,9 +27,15 @@ public class SqlUserDao extends SqlBaseDao {
 
     public SqlUserDao(boolean useTestDB) {
         super(useTestDB);
-//this.useTestDB = useTestDB;
     }
 
+    /**
+     * Lisää käyttäjän tietokantaan. Varmistaa, ettei käyttäjää löydy ennestään ennen lisäämistä.
+     * 
+     * @param user Lisättävä käyttäjä
+     * @return true, jos lisäys onnistui, false, jos käyttäjä on jo olemassa
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     public boolean addUser(User user) throws Exception {
         if (findByUsername(user.getName()) != null) {
             // user exists
@@ -49,6 +55,13 @@ public class SqlUserDao extends SqlBaseDao {
         return true;
     }
 
+    /** 
+     * Luo User olion tietokannasta haetun ResultSetin perusteella
+     * 
+     * @param results ResultSet, jossa tietokannasta haettu data
+     * @return User olion
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     private User createUserFromResultSet(ResultSet results) throws Exception {
         String uname = results.getString(1);
         int role = results.getInt(2);
@@ -71,6 +84,7 @@ public class SqlUserDao extends SqlBaseDao {
      * @return null, jos käyttäjää ei löydy. User luokan ilmentymän, jos
      * käyttäjä löytyy. Käyttäjän yhteystiedot haetaan myös SqlContactDao:n
      * avulla
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
      */
     public User findByUsername(String username) throws Exception {
         Connection connection = connectToDB();
@@ -90,6 +104,12 @@ public class SqlUserDao extends SqlBaseDao {
         }
     }
 
+    /** 
+     * Palauttaa kaikki lapsikäyttäjät
+     * 
+     * @return tietokannasta haetut lapsikäyttäjät
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     public ArrayList<User> getAllChildUsers() throws Exception {
         Connection connection = connectToDB();
         ArrayList<User> childUsers = new ArrayList<>();

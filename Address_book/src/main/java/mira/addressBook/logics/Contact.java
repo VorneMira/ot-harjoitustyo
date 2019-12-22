@@ -12,17 +12,12 @@ package mira.addressbook.logics;
 public class Contact {
 
     private String guid = java.util.UUID.randomUUID().toString();
-    //private String childName;
     private String friendName;
     private String friendPhone;
     private String friendAddress;
     private String parentName;
     private String parentPhone;
     private User user;
-
-    /*public Contact(String friendName) {
-        this.friendName = friendName;
-    }*/
 
     /**
      * Konstruktori yhteystiedolle (Contact)
@@ -43,7 +38,7 @@ public class Contact {
     /**
      * Konstruktori yhteystiedolle (Contact). Tällä konstruktorilla saa luotua tietokannasta tuodun yhteystiedon,
      * koska guid on annettavissa
-     * @param childName lapsen, jonka ystävä tämä yhteystieto on, nimi
+     * 
      * @param friendName ystävän nimi
      * @param friendPhone ystävän puhelinnumero
      * @param friendAddress ystävän osoite
@@ -51,8 +46,7 @@ public class Contact {
      * @param parentPhone vanhemman puhelinnumero
      * @param guid Guid (tietokannan tunniste)
      */
-    public Contact(/*String childName, */String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone, String guid) {
-        //this.childName = childName;
+    public Contact(String friendName, String friendPhone, String friendAddress, String parentName, String parentPhone, String guid) {
         this.friendName = friendName;
         this.friendPhone = friendPhone;
         this.friendAddress = friendAddress;

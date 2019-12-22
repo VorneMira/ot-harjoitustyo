@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- *
+ * Pohjaluokka dao:lle. Tarjoaa metodit tietokantayhteydelle ja testitietokannan sisällön alustamiselle
  * @author Mira Vorne
  */
 public class SqlBaseDao {
@@ -30,6 +30,11 @@ public class SqlBaseDao {
         this.useTestDB = useTestDB;
     }
 
+    /**
+     * Jos käytössä on testitietokanta (useTestDB == true), tyhjentää tietokannan ja luo testisisältöä testejä varten.
+     * 
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     public void initTestDB() throws Exception {
         if (this.useTestDB) {
             Connection connection = connectToDB();
@@ -63,6 +68,10 @@ public class SqlBaseDao {
         }
     }
 
+    /** 
+     * Alustaa tietokantayhteydessä käytettäviä muuttujia. Jos this.useTestDB == true, käytetään testitietokantaa.
+     * Jatkokehitykseen: kovakoodauksen sijaan luetaan arvot tiedostosta.
+     */
     private void initConnectionVariables() {
         // Initialize connection variables.	
         this.host = "testitietokanta2019.mysql.database.azure.com";
@@ -74,6 +83,11 @@ public class SqlBaseDao {
         this.password = "Suomi102";
     }
 
+    /**
+     * Luo tietokantayhteydessä tarvittavat Properties olion.
+     * 
+     * @return luotu Properties olio
+     */
     private Properties getConnectionProperties() {
         Properties properties = new Properties();
         properties.setProperty("user", this.sqluser);
@@ -84,6 +98,12 @@ public class SqlBaseDao {
         return properties;
     }
 
+    /**
+     * Luo yhteyden tietokantaan
+     * 
+     * @return Connection olio.
+     * @throws Exception voi heittää virheen, jos ongelmia tietokantayhteydessä
+     */
     protected Connection connectToDB() throws Exception {
         initConnectionVariables();
         try {
